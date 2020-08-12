@@ -232,30 +232,30 @@ export default function Ekran1() {
     <View style={styles.container}>
       <StatusBar style="auto" hidden />
       <Circle scrollX={scrollX} />
-      <ScrollView style={{ flex: 1 }}>
-        <Animated.FlatList
-          keyExtractor={(item) => item.key}
-          data={data}
-          renderItem={({ item, index }) => (
-            <>
-              {index < 4 ? (
-                <Item {...item} index={index} scrollX={scrollX} />
-              ) : (
-                <EkranGry {...item} index={index} scrollX={scrollX} />
-              )}
-            </>
-          )}
-          pagingEnabled
-          showsHorizontalScrollIndicator={false}
-          horizontal
-          onScroll={Animated.event(
-            [{ nativeEvent: { contentOffset: { x: scrollX } } }],
-            { useNativeDriver: true }
-          )}
-          scrollEventThrottle={16}
-        />
-        <A />
-      </ScrollView>
+
+      <Animated.FlatList
+        keyExtractor={(item) => item.key}
+        data={data}
+        renderItem={({ item, index }) => (
+          <>
+            {index < 4 ? (
+              <Item {...item} index={index} scrollX={scrollX} />
+            ) : (
+              <EkranGry {...item} index={index} scrollX={scrollX} />
+            )}
+          </>
+        )}
+        pagingEnabled
+        showsHorizontalScrollIndicator={false}
+        horizontal
+        onScroll={Animated.event(
+          [{ nativeEvent: { contentOffset: { x: scrollX } } }],
+          { useNativeDriver: true }
+        )}
+        scrollEventThrottle={16}
+      />
+      <A />
+
       <Pagination scrollX={scrollX} />
     </View>
   );
